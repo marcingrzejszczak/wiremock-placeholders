@@ -17,8 +17,8 @@ buildscript {
 }
 
 description = 'Modifies our Wiremock based stub definitions to support the notion of Consumer Driven Contracts'
-group = 'com.ofg'
-version = '0.0.1'
+group = 'com.blogspot.toomuchcoding'
+version = '0.0.2-SNAPSHOT'
 
 repositories {
     mavenLocal()
