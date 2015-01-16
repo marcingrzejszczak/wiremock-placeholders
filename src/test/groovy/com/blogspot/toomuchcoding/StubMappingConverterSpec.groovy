@@ -1,4 +1,4 @@
-package com.ofg.stub.mapping
+package com.blogspot.toomuchcoding
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import spock.lang.Specification
