@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPattern": "${/[0-9]{2}}:${/12}"
+    },
+    "response": {
+        "status": 200,
+        "body": "pong",
+        "headers": {
+            "Content-Type": "text/plain"
+        }
+    }
+}

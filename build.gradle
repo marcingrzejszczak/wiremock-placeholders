@@ -1,0 +1,45 @@
+apply plugin: 'groovy'
+apply plugin: 'com.ofg.uptodate'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:+'
+        if (project.hasProperty("coverage")) { classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:+' }
+    }
+}
+
+description = 'Modifies our Wiremock based stub definitions to support the notion of Consumer Driven Contracts'
+group = 'com.ofg'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+ext {
+    slf4jVersion = '1.7.7'
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.8'
+    compile ('com.github.tomakehurst:wiremock:1.53') {
+        exclude group: 'org.mortbay.jetty', module: 'servlet-api'
+    }
+    compile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.4'
+
+    testCompile "org.slf4j:slf4j-api:$slf4jVersion"
+    testCompile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+    testCompile 'ch.qos.logback:logback-classic:1.1.2'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}

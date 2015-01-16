@@ -1,0 +1,7 @@
+*.iml
+.idea/
+.gradle/
+build/
+out/
+commitHash.txt
+atlassian-ide-plugin.xml
