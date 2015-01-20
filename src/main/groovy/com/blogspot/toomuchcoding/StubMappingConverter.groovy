@@ -6,6 +6,14 @@ import groovy.json.JsonSlurper
 
 import java.util.regex.Pattern
 
+/**
+ *
+ * Converter of stub mappings with placeholders to Wirem ock's StubMapping.
+ *
+ * @see StubMapping
+ *
+ * @author Marcin Grzejszczak
+ */
 class StubMappingConverter {
 
     private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile(/^\$\{(.*)\}:\$\{(.*)\}$/)
