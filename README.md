@@ -52,7 +52,7 @@ To achieve that we needed to tweak the standard Wiremock stub definitions by pro
 two values for one field. This is done via the following pattern:
 
 ```
-${VALUE_FOR_CLIENT_TESTS}:${VALUE_FOR_SERVER_TESTS}
+${VALUE_FOR_CLIENT_TESTS:VALUE_FOR_SERVER_TESTS}
 ```
 
 That means that depending on the need you can take either value for the client test or server test.
@@ -69,7 +69,7 @@ Let's take a look at the following example
     },
     "response": {
         "status": 200,
-        "body": "${{\"date\":\"2015-01-14\"}}:${isCurrentDate(it.date)}",
+        "body": "${{\"date\":\"2015-01-14\"}:$isCurrentDate($it)}",
         "headers": {
             "Content-Type": "text/plain"
         }
@@ -110,6 +110,13 @@ we will receive the current date (`isCurrentDate(it.date)`).
 
 The latter value will be checked if it's a method (if it contains parentheses) and then a method will be
 called with the corresponding field's (status, body, headers etc.) value as input.
+
+`VALUE_FOR_SERVER_TESTS` can use `$it` notation to pass body as method argument. The method in the generated Spec can be access also with `$` prefix - if you want to call a method `isPersonalIdValid(String requestBody)` you can do it as follows:
+
+```
+${123456789:$isPersonalIdValid($it)}
+```
+
 
 
 ```
